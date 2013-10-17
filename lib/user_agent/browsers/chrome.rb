@@ -64,6 +64,8 @@ class UserAgent
       def localization
         if application.nil?
           nil
+        elsif application.comment[1] =~ /Android/
+          application.comment[2]
         else
           application.comment[3]
         end

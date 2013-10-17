@@ -326,3 +326,35 @@ describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKi
     @useragent.localization.should == "en-US"
   end
 end
+
+describe "UserAgent: 'Mozilla/5.0 (Linux; Android 4.2.2; en-us; SAMSUNG-SGH-I337Z Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Version/1.0 Chrome/18.0.1025.308 Mobile Safari/535.19'" do
+  before do
+    @useragent = UserAgent.parse("Mozilla/5.0 (Linux; Android 4.2.2; en-us; SAMSUNG-SGH-I337Z Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Version/1.0 Chrome/18.0.1025.308 Mobile Safari/535.19")
+  end
+
+  it_should_behave_like "Chrome browser"
+
+  it "should return '535.19' as its build" do
+    @useragent.build.should == "535.19"
+  end
+
+  it "should return '18.0.1025.308' as its version" do
+    @useragent.version.should == "18.0.1025.308"
+  end
+
+  it "should return '535.19' as its webkit version" do
+    @useragent.webkit.version.should == "535.19"
+  end
+
+  it "should return 'Linux' as its platform" do
+    @useragent.platform.should == "Linux"
+  end
+
+  it "should return 'Windows XP' as its os" do
+    @useragent.os.should == "Android 4.2.2"
+  end
+
+  it "should return 'en-us' as its localization" do
+    @useragent.localization.should == "en-us"
+  end
+end
